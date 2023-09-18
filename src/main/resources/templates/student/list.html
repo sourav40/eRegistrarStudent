@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eRegistrar</title>
+</head>
+<body>
+
+<div>
+    <h2>Student list</h2>
+
+    <div>
+        <form action="/student/addPage" method="get">
+            <button type="submit">Add Student</button>
+        </form>
+    </div>
+
+    <br/>
+
+    <div>
+        <form action="/student/search" method="post">
+            <label>Enter Student Number: </label>
+            <input type="text" name="studentNumber" th:value="${studentNumber}"/>
+            <input type="submit">
+        </form>
+    </div>
+
+    <br/>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Student Id</th>
+            <th scope="col">Student Number</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Middle Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">CGPA</th>
+            <th scope="col">Date of Enrollment</th>
+            <th scope="col">IsInternational</th>
+            <th scope="co'">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student, iter : ${studentList}">
+            <th scope="row" th:text="${iter.count}"></th>
+            <td th:text="${student.studentId}"></td>
+            <td th:text="${student.studentNumber}"></td>
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.middleName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.cgpa}"></td>
+            <td th:text="${student.dateOfEnrollment}"></td>
+            <td th:text="${student.isInternational}"></td>
+            <td>
+
+                <form action="/student/editPage" method="get">
+                    <button type="submit" name="studentNumber" th:value="${student.studentNumber}">Edit</button>
+                </form>
+
+                <form action="/student/delete" method="post">
+                    <button type="submit" name="studentNumber" th:value="${student.studentNumber}">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

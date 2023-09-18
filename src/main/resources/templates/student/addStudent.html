@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Student</title>
+</head>
+<body>
+<h2>Add Student</h2>
+
+<form th:object="${student}" action="/student/add" method="post">
+  <table>
+
+    <tr>
+      <td>Student Number: </td>
+      <td><input type="text" th:field="*{studentNumber}"></td>
+    </tr>
+
+    <tr>
+      <td>First Name: </td>
+      <td><input type="text" th:field="*{firstName}"></td>
+    </tr>
+
+    <tr>
+      <td>Middle Name: </td>
+      <td><input type="text" th:field="*{middleName}"></td>
+    </tr>
+
+    <tr>
+      <td>Last Name: </td>
+      <td><input type="text" th:field="*{lastName}"></td>
+    </tr>
+
+    <tr>
+      <td>CPGA: </td>
+      <td><input type="text" th:field="*{cgpa}"></td>
+    </tr>
+
+    <tr>
+      <td>Date of Enrollment </td>
+      <td><input type="text" th:field="*{dateOfEnrollment}"></td>
+    </tr>
+
+    <tr>
+      <td>Is International: </td>
+      <td>
+        <input type="radio" value="Yes" th:field="*{isInternational}">Yes
+        <input type="radio" value="No" th:field="*{isInternational}">No
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <button type="submit">Save</button>
+      </td>
+    </tr>
+
+  </table>
+</form>
+
+</body>
+</html>
